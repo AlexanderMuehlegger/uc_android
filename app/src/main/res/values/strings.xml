@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Taschenrechner</string>
+    <string name="dividesymbol">&#247;</string>
+    <string name="multiSymbol">&#215;</string>
+</resources>
