@@ -2,4 +2,14 @@
     <string name="app_name">Taschenrechner</string>
     <string name="dividesymbol">&#247;</string>
     <string name="multiSymbol">&#215;</string>
+    <string name="deleteSymbol">&#x232B;</string>
+
+    <string-array name="operators">
+        <item>+</item>
+        <item>-</item>
+        <item>*</item>
+        <item>/</item>
+        <item>^</item>
+    </string-array>
+
 </resources>

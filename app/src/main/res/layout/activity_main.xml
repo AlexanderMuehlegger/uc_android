@@ -16,12 +16,26 @@
         android:layout_weight="3"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Simple"
+                android:layout_marginLeft="5dp"
+                android:onClick="openSimpleCalc"/>
+
+        </LinearLayout>
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="34,5 *"
+            android:text=""
             android:textAlignment="textEnd"
             android:textColor="@color/white"
             android:textSize="24dp"
@@ -33,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="5"
-            android:text="34,5*2"
+            android:text=""
             android:textAlignment="textEnd"
             android:textColor="@color/white"
             android:textSize="30dp"
@@ -45,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="5"
-            android:text="69"
+            android:text=""
             android:textAlignment="textEnd"
             android:textColor="@color/white"
             android:textSize="45dp"
@@ -60,7 +74,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"
+        android:layout_weight="6"
         android:orientation="vertical">
 
         <LinearLayout
@@ -72,52 +86,41 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/numberColor"
+                android:layout_weight="2.12"
+                android:background="@drawable/clear_button"
                 android:gravity="center"
                 android:text="C"
                 android:textAlignment="center"
                 android:textColor="@color/numberFontColor"
                 android:textSize="@dimen/btnTextSize"
-                android:onClick="clearOnClick"/>
-
+                android:onClick="clearOnClick"
+                android:layout_margin="5dp"/>
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/numberColor"
+                android:background="@drawable/custom_button"
                 android:textColor="@color/numberFontColor"
-                android:text="( )"
+                android:text="@string/deleteSymbol"
                 android:textAlignment="center"
-                android:textSize="@dimen/btnTextSize"
+                android:textSize="25dp"
                 android:gravity="center"
-                android:onClick="addBrackets"/>
+                android:onClick="deleteLastChar"
+                android:layout_margin="5dp"/>
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/numberColor"
-                android:textColor="@color/numberFontColor"
-                android:text="%"
-                android:textAlignment="center"
-                android:textSize="@dimen/btnTextSize"
-                android:gravity="center"
-                android:onClick="addProcentage"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/numberColor"
+                android:background="@drawable/custom_button"
                 android:textColor="@color/numberFontColor"
                 android:text="@string/divideSymbol"
                 android:textAlignment="center"
                 android:textSize="40dp"
-                android:fontFamily="@font/computomonospace"
                 android:gravity="center"
-                android:onClick="addDevition"/>
+                android:onClick="addDevition"
+                android:layout_margin="5dp"/>
 
         </LinearLayout>
 
@@ -131,49 +134,53 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/numberColor"
+                android:background="@drawable/custom_button"
                 android:textColor="@color/numberFontColor"
                 android:text="7"
                 android:textAlignment="center"
                 android:textSize="@dimen/btnTextSize"
                 android:gravity="center"
-                android:onClick="addSeven"/>
+                android:onClick="addSeven"
+                android:layout_margin="5dp"/>
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/numberColor"
+                android:background="@drawable/custom_button"
                 android:textColor="@color/numberFontColor"
                 android:text="8"
                 android:textAlignment="center"
                 android:textSize="@dimen/btnTextSize"
                 android:gravity="center"
-                android:onClick="addEight"/>
+                android:onClick="addEight"
+                android:layout_margin="5dp"/>
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/numberColor"
+                android:background="@drawable/custom_button"
                 android:textColor="@color/numberFontColor"
                 android:text="9"
                 android:textAlignment="center"
                 android:textSize="@dimen/btnTextSize"
                 android:gravity="center"
-                android:onClick="addNine"/>
+                android:onClick="addNine"
+                android:layout_margin="5dp"/>
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/numberColor"
+                android:background="@drawable/custom_button"
                 android:textColor="@color/numberFontColor"
                 android:text="@string/multiSymbol"
                 android:textAlignment="center"
                 android:textSize="30dp"
                 android:gravity="center"
-                android:onClick="addMulti"/>
+                android:onClick="addMulti"
+                android:layout_margin="5dp"/>
 
         </LinearLayout>
 
@@ -187,49 +194,53 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/numberColor"
+                android:background="@drawable/custom_button"
                 android:textColor="@color/numberFontColor"
                 android:text="4"
                 android:textAlignment="center"
                 android:textSize="@dimen/btnTextSize"
                 android:gravity="center"
-                android:onClick="addFour"/>
+                android:onClick="addFour"
+                android:layout_margin="5dp"/>
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/numberColor"
+                android:background="@drawable/custom_button"
                 android:textColor="@color/numberFontColor"
                 android:text="5"
                 android:textAlignment="center"
                 android:textSize="@dimen/btnTextSize"
                 android:gravity="center"
-                android:onClick="addFive"/>
+                android:onClick="addFive"
+                android:layout_margin="5dp"/>
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/numberColor"
+                android:background="@drawable/custom_button"
                 android:textColor="@color/numberFontColor"
                 android:text="6"
                 android:textAlignment="center"
                 android:textSize="@dimen/btnTextSize"
                 android:gravity="center"
-                android:onClick="addSix"/>
+                android:onClick="addSix"
+                android:layout_margin="5dp"/>
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/numberColor"
+                android:background="@drawable/custom_button"
                 android:textColor="@color/numberFontColor"
                 android:text="-"
                 android:textAlignment="center"
                 android:textSize="30dp"
                 android:gravity="center"
-                android:onClick="addSubs"/>
+                android:onClick="addSubs"
+                android:layout_margin="5dp"/>
 
         </LinearLayout>
 
@@ -243,49 +254,53 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/numberColor"
+                android:background="@drawable/custom_button"
                 android:textColor="@color/numberFontColor"
                 android:text="1"
                 android:textAlignment="center"
                 android:textSize="@dimen/btnTextSize"
                 android:gravity="center"
-                android:onClick="addOne"/>
+                android:onClick="addOne"
+                android:layout_margin="5dp"/>
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/numberColor"
+                android:background="@drawable/custom_button"
                 android:textColor="@color/numberFontColor"
                 android:text="2"
                 android:textAlignment="center"
                 android:textSize="@dimen/btnTextSize"
                 android:gravity="center"
-                android:onClick="addTwo"/>
+                android:onClick="addTwo"
+                android:layout_margin="5dp"/>
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/numberColor"
+                android:background="@drawable/custom_button"
                 android:textColor="@color/numberFontColor"
                 android:text="3"
                 android:textAlignment="center"
                 android:textSize="@dimen/btnTextSize"
                 android:gravity="center"
-                android:onClick="addThree"/>
+                android:onClick="addThree"
+                android:layout_margin="5dp"/>
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/numberColor"
+                android:background="@drawable/custom_button"
                 android:textColor="@color/numberFontColor"
                 android:text="+"
                 android:textAlignment="center"
                 android:textSize="@dimen/btnTextSize"
                 android:gravity="center"
-                android:onClick="addAddition"/>
+                android:onClick="addAddition"
+                android:layout_margin="5dp"/>
 
         </LinearLayout>
 
@@ -299,49 +314,53 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/numberColor"
+                android:background="@drawable/custom_button"
                 android:textColor="@color/numberFontColor"
                 android:text="+/-"
                 android:textAlignment="center"
                 android:textSize="@dimen/btnTextSize"
                 android:gravity="center"
-                android:onClick="changeNegativity"/>
+                android:onClick="changeNegativity"
+                android:layout_margin="5dp"/>
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/numberColor"
+                android:background="@drawable/custom_button"
                 android:textColor="@color/numberFontColor"
                 android:text="0"
                 android:textAlignment="center"
                 android:textSize="@dimen/btnTextSize"
                 android:gravity="center"
-                android:onClick="addZero"/>
+                android:onClick="addZero"
+                android:layout_margin="5dp"/>
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/numberColor"
+                android:background="@drawable/custom_button"
                 android:textColor="@color/numberFontColor"
                 android:text=","
                 android:textAlignment="center"
                 android:textSize="@dimen/btnTextSize"
                 android:gravity="center"
-                android:onClick="addComma"/>
+                android:onClick="addComma"
+                android:layout_margin="5dp"/>
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/numberColor"
+                android:background="@drawable/custom_button"
                 android:textColor="@color/numberFontColor"
                 android:text="="
                 android:textAlignment="center"
                 android:textSize="@dimen/btnTextSize"
                 android:gravity="center"
-                android:onClick="calculateOnClick"/>
+                android:onClick="calculateOnClick"
+                android:layout_margin="5dp"/>
 
         </LinearLayout>
 
