@@ -137,11 +137,25 @@ public class SimpleActivity extends AppCompatActivity {
 
             case '√':
                 try{
+
+
+
+
                     result = Math.pow(operandOne, 1/operandTwo);
                     addToHistory(operandTwo + " √ " + operandOne + " = " + result);
                     break;
                 }catch(Exception e){
                     e.printStackTrace();
+                    String information = "";
+
+                    if(operandTwo == 0){
+                        information = "0√";
+                    }else if(operandOne < 0){
+                        information = "Number is not allowed to be negative!";
+                    }
+
+                    addToHistory(operandTwo + " √ " + operandOne + " = " + "ERROR: " + information);
+
                     return false;
                 }
         }
