@@ -44,7 +44,7 @@
             android:layout_gravity="end"
             android:gravity="center_vertical"
             android:id="@+id/tempEquation"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="25dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
             android:layout_gravity="end"
             android:gravity="center_vertical"
             android:id="@+id/equasionField"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="25dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -80,7 +80,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="6"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -139,13 +140,14 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/custom_button"
+                android:background="@drawable/clear_button"
                 android:textColor="@color/numberFontColor"
                 android:text="7"
                 android:textAlignment="center"
                 android:textSize="@dimen/btnTextSize"
                 android:gravity="center"
                 android:onClick="addSeven"
+
                 android:layout_margin="5dp"/>
 
             <Button
