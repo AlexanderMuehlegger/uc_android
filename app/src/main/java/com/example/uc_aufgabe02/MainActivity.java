@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private String result;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,11 +62,24 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void setEquationTemp(String toAdd, char operator){
-        currentTempEquation += (toAdd + operator);
-        tempEquation.setText(currentTempEquation);
-        currentEquation = "";
-        equationField.setText(currentEquation);
+    private void addToTempEquation(String toAdd, char operator){
+        try{
+
+            if(!currentTempEquation.equals("")){
+                char tempOperator = currentTempEquation.charAt(currentTempEquation.length()-1);
+
+                double result = calculate(currentEquation, currentTempEquation.substring(0, currentTempEquation.length()-1), tempOperator);
+                toAdd = String.valueOf(result);
+            }
+
+            currentTempEquation = (toAdd + operator);
+            tempEquation.setText(currentTempEquation);
+            currentEquation = "";
+            equationField.setText(currentEquation);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     private void setEquation(String toSet){
@@ -84,10 +99,9 @@ public class MainActivity extends AppCompatActivity {
     public void calculateOnClick(View view) {
         if(checkEquationField()){
             if(!checkTempEquationField()){
-                setResult(currentEquation);
-                return;
+                addToTempEquation(currentEquation, '+');
             }else{
-                double result = calculate(currentEquation, currentTempEquation);
+                double result = calculate(currentEquation, currentTempEquation.substring(0, currentTempEquation.length()-1), currentTempEquation.charAt(currentTempEquation.length()-1));
                 if(result % 1 == 0){
                     setResult(String.valueOf((int) result));
                 }else{
@@ -188,25 +202,20 @@ public class MainActivity extends AppCompatActivity {
     //Operators
 
     public void addAddition(View view) {
-        setEquationTemp(checkCurrentEquation(), '+');
+        addToTempEquation(checkCurrentEquation(), '+');
     }
 
     public void addSubs(View view) {
-        setEquationTemp(checkCurrentEquation(), '-');
+        addToTempEquation(checkCurrentEquation(), '-');
     }
 
     public void addMulti(View view) {
-        setEquationTemp(checkCurrentEquation(), '*');
+        addToTempEquation(checkCurrentEquation(), '*');
     }
 
     public void addDevition(View view) {
-        setEquationTemp(checkCurrentEquation(), '/');
+        addToTempEquation(checkCurrentEquation(), '/');
     }
-
-    public void addProcentage(View view) {
-        setEquationTemp(checkCurrentEquation(), '%');
-    }
-
 
     //checking Methods
 
@@ -251,9 +260,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private double calculate(String equation, String tempEquation){
-        char operator = tempEquation.charAt(tempEquation.length()-1);
-        double firstNumber = Double.parseDouble(tempEquation.substring(0, tempEquation.length()-1));
+    private double calculate(String equation, String tempEquation, char operator){
+
+        double firstNumber = Double.parseDouble(tempEquation);
         double secondNumber = Double.parseDouble(equation);
 
         switch(operator){

@@ -25,16 +25,18 @@ public class SimpleActivity extends AppCompatActivity {
     private double operandTwo;
     private double result;
 
+    String history;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simple);
+        initEssentials();
     }
 
     public void changeToComplex(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        initEssentials();
     }
 
     private void initEssentials(){
@@ -49,6 +51,8 @@ public class SimpleActivity extends AppCompatActivity {
         operandOne = 0;
         operandTwo = 0;
         result = 0;
+
+        history = "";
     }
 
     private void setResult(){
@@ -56,11 +60,13 @@ public class SimpleActivity extends AppCompatActivity {
     }
 
     private void addToHistory(String toAdd){
-        historyView.append(toAdd);
+        historyView.append(toAdd + "\n");
     }
 
+
+
     private void resetCalc(boolean withHistory){
-        if(withHistory){
+        if(withHistory && historyView != null){
             historyView.setText("");
         }
 
@@ -71,56 +77,97 @@ public class SimpleActivity extends AppCompatActivity {
         resultView.setText("");
         numberOne.setText("");
         numberTwo.setText("");
+        initEssentials();
+    }
 
+    private void resetInputs(){
+        numberOne.setText("");
+        numberTwo.setText("");
     }
 
     public void calculateOnClick(View view) {
         if(checkNumbers()){
             char operator = operSpinner.getSelectedItem().toString().charAt(0);
 
-            switch(operator){
-                case '+':
-                    result = operandOne + operandTwo;
-                    addToHistory(operandOne + " + " + operandTwo + " = " + result);
-                case '-':
-                    result = operandOne - operandTwo;
-                    addToHistory(operandOne + " - " + operandTwo + " = " + result);
-                case '*':
-                    result = operandOne * operandTwo;
-                    addToHistory(operandOne + " * " + operandTwo + " = " + result);
-                case '/':
-                    if(operandTwo != 0){
-                        result = operandOne / operandTwo;
-                        addToHistory(operandOne + " / " + operandTwo + " = " + result);
-                    }else{
-
-                        Snackbar.make(viewForSnackbar,"Division durch 0 nicht möglich", Snackbar.LENGTH_LONG).show();
-                        resetCalc(false);
-                        return;
-                    }
-
+            if(calculate(operator)){
+                setResult();
+            }else{
+                resultView.setText("ERROR");
             }
 
-            setResult();
+            resetInputs();
 
         }
     }
 
+    private boolean calculate(char operator){
+        switch(operator){
+            case '+':
+                result = operandOne + operandTwo;
+                addToHistory(operandOne + " + " + operandTwo + " = " + result);
+                break;
+            case '-':
+                result = operandOne - operandTwo;
+                addToHistory(operandOne + " - " + operandTwo + " = " + result);
+                break;
+            case '*':
+                result = operandOne * operandTwo;
+                addToHistory(operandOne + " * " + operandTwo + " = " + result);
+                break;
+            case '/':
+                if(operandTwo != 0){
+                    result = operandOne / operandTwo;
+                    addToHistory(operandOne + " / " + operandTwo + " = " + result);
+                }else{
+                    addToHistory(operandOne + "/" + operandTwo + " = ERROR: Devide by Zero");
+                    resetCalc(false);
+                    return false;
+                }
+                break;
+
+            case '^':
+                try{
+                    result = Math.pow(operandOne, operandTwo);
+                    addToHistory(operandOne + " ^ " + operandTwo + " = " + result);
+                    break;
+                }catch(Exception e){
+                    e.printStackTrace();
+                    return false;
+                }
+
+            case '√':
+                try{
+                    result = Math.pow(operandOne, 1/operandTwo);
+                    addToHistory(operandTwo + " √ " + operandOne + " = " + result);
+                    break;
+                }catch(Exception e){
+                    e.printStackTrace();
+                    return false;
+                }
+        }
+
+        return true;
+    }
 
     //checking Methods
     private boolean checkNumbers(){
         String textOne = numberOne.getText().toString();
         String textTwo = numberTwo.getText().toString();
 
+
         if((textOne == null || textTwo == null) && (!textOne.equals("") || !textOne.equals(""))){
             return false;
         }else{
             operandOne = Double.parseDouble(textOne);
             operandTwo = Double.parseDouble(textTwo);
+            System.out.println(operandOne);
+            System.out.println(operandTwo);
             return true;
         }
 
     }
+
+
 
 
     public void resetOnClick(View view) {

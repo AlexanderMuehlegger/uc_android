@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">Taschenrechner</string>
+    <string name="subSymbol">&#8315;</string>
+    <string name="addSymbol">&#8314;</string>
     <string name="dividesymbol">&#247;</string>
     <string name="multiSymbol">&#215;</string>
     <string name="deleteSymbol">&#x232B;</string>
+    <string name="rootSymbol">&#x221A;</string>
 
     <string-array name="operators">
         <item>+</item>
@@ -10,6 +13,7 @@
         <item>*</item>
         <item>/</item>
         <item>^</item>
+        <item>&#x221A;</item>
     </string-array>
 
 </resources>
